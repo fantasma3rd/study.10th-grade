@@ -71,7 +71,8 @@
     </script>
     <script>
         async function send() {
-            if (document.getElementById('order').value == "Japanese") {
+            const order = document.getElementById('order').value;
+            if (order == "Japanese") {
                 const data = {
                     order: document.getElementById('order').value,
                     word: document.getElementById('word').value,
@@ -79,7 +80,7 @@
                     meaning: document.getElementById('meaning').value,
                     remark: document.getElementById('remark').value,
                 };
-            } else if (document.getElementById('order').value == "English") {
+            } else if (order == "English") {
                 const data = {
                     order: document.getElementById('order').value,
                     word: document.getElementById('word').value,
