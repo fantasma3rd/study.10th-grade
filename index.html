@@ -26,12 +26,12 @@
                 <input type="text" id="word" class="form-control">
             </div>
             <div class="col-12 col-sm-2" id="type_japanese" style="display:block;">
-                <label class="form-label" for="type">読み</label>
+                <label class="form-label" for="type_jp">読み</label>
                 <input type="text" id="type_jp" class="form-control">
             </div>
             <div class="col-12 col-sm-2" id="type_english" style="display:none;">
                 <label class="form-label" for="type_en">種類</label>
-                <select id="type" class="form-select">
+                <select id="type_en" class="form-select">
                     <option disabled selected></option>
                     <option value="名">名詞</option>
                     <option value="代">代名詞</option>
@@ -72,23 +72,19 @@
     <script>
         async function send() {
             const order = document.getElementById('order').value;
+            let data = {
+                order: order,
+                word: document.getElementById('word').value,
+                meaning: document.getElementById('meaning').value,
+                remark: document.getElementById('remark').value,
+            };
+
             if (order == "Japanese") {
-                const data = {
-                    order: document.getElementById('order').value,
-                    word: document.getElementById('word').value,
-                    type: document.getElementById('type_jp').value,
-                    meaning: document.getElementById('meaning').value,
-                    remark: document.getElementById('remark').value,
-                };
+                data.type = document.getElementById('type_jp').value;
             } else if (order == "English") {
-                const data = {
-                    order: document.getElementById('order').value,
-                    word: document.getElementById('word').value,
-                    type: document.getElementById('type_en').value,
-                    meaning: document.getElementById('meaning').value,
-                    remark: document.getElementById('remark').value,
-                };
+                data.type = document.getElementById('type_en').value;
             }
+
             if (!data.order || !data.word || !data.type || !data.meaning) {
                 alert('送信に失敗しました。入力欄を埋めてください。');
                 return;
