@@ -84,7 +84,7 @@
             }
 
             try {
-                const url = ${{ secrets.API_URL}} + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark;
+                const url = ${{ secrets.API_URL }} + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark;
                 const res = await fetch(url, { method: 'GET' });
                 if (res.ok) {
                     alert('送信しました。');
