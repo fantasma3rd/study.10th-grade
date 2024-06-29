@@ -27,10 +27,10 @@
             </div>
             <div class="col-12 col-sm-2" id="type_japanese" style="display:block;">
                 <label class="form-label" for="type">読み</label>
-                <input type="text" id="type" class="form-control">
+                <input type="text" id="type_jp" class="form-control">
             </div>
             <div class="col-12 col-sm-2" id="type_english" style="display:none;">
-                <label class="form-label" for="type">種類</label>
+                <label class="form-label" for="type_en">種類</label>
                 <select id="type" class="form-select">
                     <option disabled selected></option>
                     <option value="名">名詞</option>
@@ -71,13 +71,23 @@
     </script>
     <script>
         async function send() {
-            const data = {
-                order: document.getElementById('order').value,
-                word: document.getElementById('word').value,
-                type: document.getElementById('type').value,
-                meaning: document.getElementById('meaning').value,
-                remark: document.getElementById('remark').value,
-            };
+            if (document.getElementById('order').value == "Japanese") {
+                const data = {
+                    order: document.getElementById('order').value,
+                    word: document.getElementById('word').value,
+                    type: document.getElementById('type_jp').value,
+                    meaning: document.getElementById('meaning').value,
+                    remark: document.getElementById('remark').value,
+                };
+            } else if (document.getElementById('order').value == "English") {
+                const data = {
+                    order: document.getElementById('order').value,
+                    word: document.getElementById('word').value,
+                    type: document.getElementById('type_en').value,
+                    meaning: document.getElementById('meaning').value,
+                    remark: document.getElementById('remark').value,
+                };
+            }
             if (!data.order || !data.word || !data.type || !data.meaning) {
                 alert('送信に失敗しました。入力欄を埋めてください。');
                 return;
