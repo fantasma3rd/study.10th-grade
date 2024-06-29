@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>登録</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css"
+        integrity="sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g=="
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-12 col-sm-5">
+                <label class="form-label" for="order">ジャンル</label>
+                <select id="order" class="form-select" onchange="viewChange();">
+                    <option value="Japanese">語彙 / 漢字</option>
+                    <option value="English">英単語</option>
+                </select>
+            </div>
+            <div class="col-12 col-sm-5">
+                <label class="form-label" for="word">単語</label>
+                <input type="text" id="word" class="form-control">
+            </div>
+            <div class="col-12 col-sm-2" id="type_japanese" style="display:block;">
+                <label class="form-label" for="type">読み</label>
+                <input type="text" id="type" class="form-control">
+            </div>
+            <div class="col-12 col-sm-2" id="type_english" style="display:none;">
+                <label class="form-label" for="type">種類</label>
+                <select id="type" class="form-select">
+                    <option disabled selected></option>
+                    <option value="名">名詞</option>
+                    <option value="代">代名詞</option>
+                    <option value="自動">自動詞</option>
+                    <option value="他動">他動詞</option>
+                    <option value="形">形容詞</option>
+                    <option value="副">副詞</option>
+                    <option value="助">助動詞</option>
+                    <option value="前">前置詞</option>
+                    <option value="接">接続詞</option>
+                    <option value="間">間投詞</option>
+                </select>
+            </div>
+        </div>
+        <div class="mt-2">
+            <label class="form-label" for="meaning">意味</label>
+            <textarea id="meaning" class="form-control"></textarea>
+        </div>
+        <div class="mt-2">
+            <label class="form-label" for="remark">備考</label>
+            <textarea id="remark" class="form-control"></textarea>
+        </div>
+        <button id="send" class="btn btn-primary mt-3" onclick="send()">送信</button>
+    </div>
+    <script>
+        function viewChange() {
+            const order = document.getElementById('order').value;
+            if (order == 'Japanese') {
+                document.getElementById('type_japanese').style.display = "block";
+                document.getElementById('type_english').style.display = "none";
+            } else if (order == 'English') {
+                document.getElementById('type_japanese').style.display = "none";
+                document.getElementById('type_english').style.display = "block";
+            }
+        }
+        window.onload = viewChange;
+    </script>
+    <script>
+        async function send() {
+            const data = {
+                order: document.getElementById('order').value,
+                word: document.getElementById('word').value,
+                type: document.getElementById('type').value,
+                meaning: document.getElementById('meaning').value,
+                remark: document.getElementById('remark').value,
+            };
+            if (!data.order || !data.word || !data.type || !data.meaning) {
+                alert('送信に失敗しました。入力欄を埋めてください。');
+                return;
+            }
+
+            try {
+                const url = ${{ secrets.API_URL}} + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark;
+                const res = await fetch(url, { method: 'GET' });
+                if (res.ok) {
+                    alert('送信しました。');
+                } else {
+                    alert('送信に失敗しました。');
+                }
+            } catch (e) {
+                alert('送信に失敗しました。');
+            }
+        }
+    </script>
+</body>
+
+</html>
