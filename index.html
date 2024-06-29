@@ -84,7 +84,7 @@
             }
 
             try {
-                const url = ${{ secrets.API_URL }} + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark;
+                const url = "https://script.google.com/macros/s/AKfycbwxYM18uQfMRgBgYF65zXts2gqx6cNsuO_9SdfqMw1QTMOc5BuggiEuf43irrACPFaelw/exec" + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark;
                 const res = await fetch(url, { method: 'GET' });
                 if (res.ok) {
                     alert('送信しました。');
