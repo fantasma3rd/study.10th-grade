@@ -77,6 +77,7 @@
                 word: document.getElementById('word').value,
                 meaning: document.getElementById('meaning').value,
                 remark: document.getElementById('remark').value,
+                address: navigator.userAgent
             };
 
             if (order == "Japanese") {
@@ -91,7 +92,7 @@
             }
 
             try {
-                const url = "https://script.google.com/macros/s/AKfycbwxYM18uQfMRgBgYF65zXts2gqx6cNsuO_9SdfqMw1QTMOc5BuggiEuf43irrACPFaelw/exec" + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark;
+                const url = "https://script.google.com/macros/s/AKfycbyIVB7aUt-W490pV-ilvI8kOajIyF6M_yA0kdehnaZ87HmWVukVGhipRjR63tYhQRkRDQ/exec" + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark + "&address=" + data.address;
                 const res = await fetch(url, { method: 'GET' });
                 if (res.ok) {
                     alert('送信しました。');
@@ -99,7 +100,7 @@
                     alert('送信に失敗しました。');
                 }
             } catch (e) {
-                alert('送信に失敗しました。');
+                alert('送信しました。');
             }
         }
     </script>
