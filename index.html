@@ -92,7 +92,7 @@
             }
 
             try {
-                const url = "https://script.google.com/macros/s/AKfycbyIVB7aUt-W490pV-ilvI8kOajIyF6M_yA0kdehnaZ87HmWVukVGhipRjR63tYhQRkRDQ/exec" + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark + "&address=" + data.address;
+                const url = "https://script.google.com/macros/s/AKfycbw5dtloP8nI2Jtb5nneWtGibXMVzARTgHzXqmSM2XrE9NQtIt69qlui0RSDZ31b41kyuA/exec" + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark + "&address=" + data.address;
                 const res = await fetch(url, { method: 'GET' });
                 if (res.ok) {
                     alert('送信しました。');
@@ -100,7 +100,7 @@
                     alert('送信に失敗しました。');
                 }
             } catch (e) {
-                alert('送信しました。');
+                alert('送信に失敗しました。');
             }
         }
     </script>
