@@ -9,28 +9,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css"
         integrity="sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g=="
         crossorigin="anonymous">
+    <style>
+        .help{
+            font-size: small;
+            color: gray;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="row mt-3">
-            <div class="col-12 col-sm-5">
+            <div class="col-12 col-sm-4">
                 <label class="form-label" for="order">ジャンル</label>
+                <label class="help">※登録内容の種別(必須)</label>
                 <select id="order" class="form-select" onchange="viewChange();">
                     <option value="Japanese">語彙 / 漢字</option>
                     <option value="English">英単語</option>
                 </select>
             </div>
-            <div class="col-12 col-sm-5">
+            <div class="col-12 col-sm-4">
                 <label class="form-label" for="word">単語</label>
+                <label class="help">※登録する単語(必須)</label>
                 <input type="text" id="word" class="form-control">
             </div>
-            <div class="col-12 col-sm-2" id="type_japanese" style="display:block;">
+            <div class="col-12 col-sm-4" id="type_japanese" style="display:block;">
                 <label class="form-label" for="type_jp">読み</label>
+                <label class="help">※登録する単語の読み方  ひらがなを推奨(必須)</label>
                 <input type="text" id="type_jp" class="form-control">
             </div>
-            <div class="col-12 col-sm-2" id="type_english" style="display:none;">
+            <div class="col-12 col-sm-4" id="type_english" style="display:none;">
                 <label class="form-label" for="type_en">種類</label>
+                <label class="help">※登録する単語の品詞 (必須)</label>
                 <select id="type_en" class="form-select">
                     <option disabled selected></option>
                     <option value="名">名詞</option>
@@ -48,13 +58,20 @@
         </div>
         <div class="mt-2">
             <label class="form-label" for="meaning">意味</label>
+            <label class="help">※登録する単語の意味(必須)</label>
             <textarea id="meaning" class="form-control"></textarea>
         </div>
         <div class="mt-2">
             <label class="form-label" for="remark">備考</label>
+            <label class="help">※その他特記事項</label>
             <textarea id="remark" class="form-control"></textarea>
         </div>
         <button id="send" class="btn btn-primary mt-3" onclick="send()">送信</button>
+        <div class="mt-2" style="padding: 10px; border: 5px double #333333;">
+            <p>登録が完了するまで、少々の時間を要します。</p>
+            <p>登録が完了する前に送信ボタンを連打すると、登録が重複する可能性があります。</p>
+            <p>送信ボタンを連打せず、登録の成否通知が表示されるまでお待ちください。</p>
+        </div>
     </div>
     <script>
         function viewChange() {
