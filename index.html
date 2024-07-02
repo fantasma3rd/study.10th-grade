@@ -92,7 +92,7 @@
             }
 
             try {
-                const url = "https://script.google.com/macros/s/AKfycbzebpuTS4XNo1BjRDEmta9g4clx1BGaaiFKCOlF7hqUJzt09WGYKi6tvQd-QMH0tw5EMA/exec" + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark + "&address=" + data.address;
+                const url = "https://script.google.com/macros/s/AKfycbx3CLCfY-EckzyVSMgjvMjO01cl4srANMDUMXSP9w-Ef2C86aHMA5rsnNiJ0NDL-7jkvw/exec" + "?order=" + data.order + "&word=" + data.word + "&type=" + data.type + "&meaning=" + data.meaning + "&remark=" + data.remark + "&address=" + data.address;
                 const res = await fetch(url, { method: 'GET' });
                 if (res.ok) {
                     alert('送信しました。');
